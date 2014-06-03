@@ -8,5 +8,13 @@ block content
 			a(href='/article/' + entry.order) #{entry.title}
 			p
 	form(action='/add_post',method='post')
-		button(class='btn', data-action='add_post') Add Post	
-
+		button(class='btn', data-action='add_post') Add Post
+	if username
+		p
+		a(href='logout') Log Out
+		p Logged in as: #{username}
+	else
+		p
+		a(href='/login') Login
+		p
+		a(href='/signup') Sign Up

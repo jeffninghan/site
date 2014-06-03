@@ -4,6 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -17,8 +18,10 @@ app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cookieParser());
+app.use(session({secret: '1234567890QWERTY', proxy: true}));
 
 app.use('/', routes);
 app.use('/users', users);
@@ -26,8 +29,8 @@ app.use('/users', users);
 // Database setup
 var mongoose = require("mongoose");
 var _ = require("underscore");
-var connect = require('./db_login')
-mongoose.connect(connect)
+var pass = require('./pass')
+mongoose.connect(pass.mongo)
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

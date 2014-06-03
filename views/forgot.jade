@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	h1 Forgot Login	
+	form(action='/forgot', method='post')
+		p Email
+		input(id='email',type='text',value='', name='email')
+		p
+		button(class='btn', data-action='forgot') Retreive Credentials
