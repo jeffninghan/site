@@ -1,0 +1,12 @@
+extends layout
+
+block content
+	h1= title
+	form(action='/submit_post',method='post')
+		p Title
+		input(id='title',type='text',value='', name='title')
+		p Body
+		input(id='body',type='text',value='', name='body')
+		p
+		button(class='btn', data-action='sumbit_post') Add Post	
+
