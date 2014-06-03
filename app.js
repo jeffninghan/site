@@ -26,6 +26,8 @@ app.use('/users', users);
 // Database setup
 var mongoose = require("mongoose");
 var _ = require("underscore");
+var connect = require('./db_login')
+mongoose.connect(connect)
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
